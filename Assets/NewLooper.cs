@@ -6,7 +6,7 @@ public class NewLooper : MonoBehaviour {
 	
 	
 	
-	public GameObject go1,go2;
+	public GameObject go1,go2,go3;
 	
 	
 	GameObject g1,g2,g3;
@@ -97,7 +97,7 @@ public class NewLooper : MonoBehaviour {
 			}
 
 		if(i==2||i==5)
-				gobs [i] = Instantiate (go2, thirdpos, transform.rotation) as GameObject;
+				gobs [i] = Instantiate (go3, thirdpos, transform.rotation) as GameObject;
 			
 			
 			
@@ -274,10 +274,10 @@ public class NewLooper : MonoBehaviour {
 			
 			
 			
-			if(gobs[i].transform.position.z>45&&gobs[i].transform.position.y>-0.001f)
-				gobs[i].transform.Translate(Vector3.up*-0.0005f);
+			if(gobs[i].transform.position.z>65&&gobs[i].transform.position.y>-0.0005f)
+				gobs[i].transform.Translate(Vector3.up*-0.00001f);
 			else
-				if(gobs[i].transform.position.z<5&&gobs[i].transform.position.y<0.1f)
+				if(gobs[i].transform.position.z<2&&gobs[i].transform.position.y<0.1f)
 					gobs[i].transform.Translate(Vector3.up*0.01f);
 			
 			
