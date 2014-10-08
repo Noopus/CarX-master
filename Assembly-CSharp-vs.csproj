@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CarMove1.cs" />
      <Compile Include="Assets\Looper.cs" />
      <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
      <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
@@ -63,6 +64,10 @@
      <None Include="Assets\MeleeWeaponTrail\README.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\curved.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{F38ABD3A-867D-ACE3-CD81-C53E052D04D3}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

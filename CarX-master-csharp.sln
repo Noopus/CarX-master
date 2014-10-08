@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{EA7443DB-5C5E-BDCA-39AF-3082516A1912}") = "CarX-master", "Assembly-CSharp-firstpass-vs.csproj", "{F38ABD3A-867D-ACE3-CD81-C53E052D04D3}"
+EndProject
 Project("{EA7443DB-5C5E-BDCA-39AF-3082516A1912}") = "CarX-master", "Assembly-CSharp-vs.csproj", "{2F477334-A861-0AE7-7F26-AB354CD0445C}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F38ABD3A-867D-ACE3-CD81-C53E052D04D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38ABD3A-867D-ACE3-CD81-C53E052D04D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38ABD3A-867D-ACE3-CD81-C53E052D04D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38ABD3A-867D-ACE3-CD81-C53E052D04D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F477334-A861-0AE7-7F26-AB354CD0445C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F477334-A861-0AE7-7F26-AB354CD0445C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F477334-A861-0AE7-7F26-AB354CD0445C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -17,7 +23,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-												GlobalSection(MonoDevelopProperties) = preSolution
+														GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
