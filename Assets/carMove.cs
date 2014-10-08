@@ -22,17 +22,39 @@ public class carMove : MonoBehaviour {
 
 
 
+
+	public GameObject parent;
+	
+	
+	
+	float speed;
+
+
+
+	void Start()
+	{
+
+
+
+		speed = parent.GetComponent<Obstacle> ().speed;
+
+
+	}
+
+
 	
 	// Use this for initialization
 	void FixedUpdate () {
 		
-		
+
+		speed = parent.GetComponent<Obstacle> ().speed;
+
 		if(right){
-			xspeep += (power)+accx/55;
+			xspeep += (power)+(speed-0.4f)/25;
 		//	fuel -= power;
 		}
 		if(left){
-			xspeep -= (power)+accx/55;
+			xspeep -= (power)+(speed-0.4f)/25;
 		//	fuel -= power;
 		}
 		
@@ -44,6 +66,26 @@ public class carMove : MonoBehaviour {
 
 
 	Touch touch;
+
+
+	public int health,count;
+
+
+
+	void setCount(int c)
+	{
+		count = c;
+	}
+	
+	int getCount()
+	{
+		return count;
+	}
+
+
+
+
+	carRotate cr;
 
 	// Update is called once per frame
 	void Update () {
@@ -60,7 +102,54 @@ public class carMove : MonoBehaviour {
 		if (Input.touchCount >0)
 		touch = Input.touches [0];
 
+
+
+
+
+		
+		
+		if (count > 150) {
+			setCount(140);
+		} else 
+		{
+			setCount(getCount()+1);		
+		}
+
 	
+
+
+
+
+		foreach (Transform t in transform)
+		{
+	//				if(t.name == "caryell")
+			{	//t.renderer.enabled=false;
+			
+			cr=t.GetComponent<carRotate>();
+
+
+
+		health=cr.delay;
+
+
+
+
+				if(cr.gameover)
+				{
+
+
+
+				
+		//			print ("health is : "+health);
+				
+				}
+			
+			}
+		
+		}
+
+
+
 		/*
 
 	//	if (Input.touchCount == 1||Input.touchCount == 0) 
@@ -103,24 +192,33 @@ public class carMove : MonoBehaviour {
 		*/
 
 
+		if (cr.gameover == false) {
+						if (Input.GetKey (KeyCode.RightArrow) || (touch.position.x > Screen.width / 2 && Input.touchCount > 0)) {
+								left = true;
+								right = false;
+			
+			
+						} else
+		if (Input.GetKey (KeyCode.LeftArrow) || (touch.position.x < Screen.width / 2 && Input.touchCount > 0)) {
+								left = false;
+								right = true;
+			
+			
+						} else {
+								left = false;
+								right = false;
+			
+						}
+				}
 
-		if (Input.GetKey (KeyCode.RightArrow)|| (touch.position.x > Screen.width / 2&&Input.touchCount >0)) {
-			left = true;
-			right = false;
-			
-			
-		} else
-		if (Input.GetKey (KeyCode.LeftArrow)|| (touch.position.x < Screen.width / 2&&Input.touchCount >0)) {
-			left = false;
-			right = true;
-			
-			
-		} else {
+		else {
 			left = false;
 			right = false;
 			
 		}
-		
+
+
+
 
 
 

@@ -32,14 +32,19 @@ public class carRotate : MonoBehaviour {
 		
 		
 		
-		
+		delay = 0;
 
-		
+
+
+		smokeparticle.renderer.enabled = false;
+
+
+
 	}
 
 
 
-	int health;
+	public int health;
 
 
 	void OnCollisionEnter(Collision collisionInfo)
@@ -48,7 +53,50 @@ public class carRotate : MonoBehaviour {
 
 		health++;
 
-		gameover=true;
+	
+		if (collisionInfo.collider.rigidbody != null) {	
+
+
+
+//			if(!collisionInfo.collider.name.Equals("Obtruck"))
+			collisionInfo.collider.rigidbody.isKinematic = false;
+
+
+			if(collisionInfo.collider.name.Equals("Obtruck"))
+			Physics.gravity=new Vector3(0,-50,0);
+			else
+				Physics.gravity=new Vector3(0,-10,0);
+
+
+
+
+			
+						collisionInfo.collider.rigidbody.useGravity = true;
+
+
+
+
+//			gameObject.collider.rigidbody.AddForce (Vector3.forward * 300);
+
+			gameObject.collider.rigidbody.AddForce (Vector3.forward * -100);
+
+
+			gameObject.collider.rigidbody.AddForce (Vector3.up * 50);
+
+
+			gameObject.collider.rigidbody.AddTorque (Vector3.forward * -500);
+
+
+
+
+			gameObject.rigidbody.useGravity=true;
+
+
+
+
+				}
+
+		   //collisionInfo.collider
 
 		
 //		print("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
@@ -57,38 +105,68 @@ public class carRotate : MonoBehaviour {
 
 
 
-		collisionInfo.collider.rigidbody.AddForce (Vector3.up * -50);
+//		collisionInfo.collider.rigidbody.AddForce (Vector3.up * -50);
 
 
 		if (collisionInfo.collider.transform.position.x > gameObject.transform.position.x) 
 		{
 
-			gameObject.transform.Translate (Vector3.left * 0.45f);
+		//	gameObject.transform.Translate (Vector3.left * 0.45f);
 
 
-						collisionInfo.collider.rigidbody.AddForce (Vector3.left * -250);
+			if (collisionInfo.collider.rigidbody != null) {	
+
+	//					collider.rigidbody.AddForce (Vector3.left * 50);
 	
 
-			collisionInfo.collider.rigidbody.AddTorque(Vector3.right * -50);
+
+	//		rigidbody.AddTorque(Vector3.right * 250);
+
+
+		//		collisionInfo.collider.rigidbody.AddForce (Vector3.left * -150);
+				
+				
+				
+		//		collisionInfo.collider.rigidbody.AddTorque(Vector3.right * -550);
+
+
+			}
+
 
 		} 
 		else
 		{
 
-			gameObject.transform.Translate (Vector3.left * -0.45f);
-
-
-						collisionInfo.collider.rigidbody.AddForce (Vector3.left * 250);
 		
-			collisionInfo.collider.rigidbody.AddTorque(Vector3.right * 50);
-		}
+			if (collisionInfo.collider.rigidbody != null) 
+			{	
+
+//	collider.rigidbody.AddForce (Vector3.left * -50);
+		
+
+
+//			collider.rigidbody.AddTorque(Vector3.right * -250);
+		
+			
+
+
+		//		collisionInfo.collider.rigidbody.AddForce (Vector3.left * 150);
+				
+				
+				
+		//		collisionInfo.collider.rigidbody.AddTorque(Vector3.right * 550);
+
+			
+			}
+			
+			}
 
 
 	}
 	
 	void OnCollisionStay(Collision collisionInfo)
 	{
-		print(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
+//		print(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
 	}
 	
 	void OnCollisionExit(Collision collisionInfo)
@@ -125,10 +203,10 @@ public class carRotate : MonoBehaviour {
 
 
 
-	int delay=0;
+	public int delay=0;
 
 
-	bool gameover;
+	public bool gameover;
 
 	// Use this for initialization
 	void FixedUpdate () {
@@ -137,39 +215,45 @@ public class carRotate : MonoBehaviour {
 		
 	
 
-		print ("health is : "+delay);
+
 		
 		
-		
-		if (health>0)
-			delay++;
-		
-		
-		
-		if (delay > 50) 
-		{
-			
-			Application.LoadLevel (0);
-			
-		}
 
 
 		if (health == 1) 
 		{
-	//							Application.LoadLevel (0);
+	
+
+		//	Application.LoadLevel (0);
 		
 
 
 		
-			Instantiate(explosion, transform.position, transform.rotation);
+		//	Instantiate(explosion, transform.position, transform.rotation);
 
 
+
+			foreach (Transform t in transform)
+			{
+		//		if(t.name == "caryell")
+		//			t.renderer.enabled=false;
+
+
+			}
+
+
+		
 
 //			Destroy(other.gameObject);
+
+
 //			Destroy(gameObject);
 
 
-			this.gameObject.SetActive(false);
+
+
+
+			gameover=true;
 
 
 
@@ -206,7 +290,7 @@ public class carRotate : MonoBehaviour {
 
 
 
-    float count=0;
+    static float count=0;
 
 
 	bool isallowed = false;
@@ -214,18 +298,68 @@ public class carRotate : MonoBehaviour {
 
 	Touch touch;
 
+
+
+	public GameObject smokeparticle;
+
+
+
+
+
 	// Update is called once per frame
 	void Update () {
 
 
 
+//		smokeparticle.particleEmitter.emit = false;
+
+
+		if (gameover) {
+						delay += 1;
+		
+			smokeparticle.renderer.enabled = true;
+
+		}else
+			delay=0;
+		
+	
+
+
+		//	Instantiate(explosion, transform.position, transform.rotation);
+		
+		
+		if(delay==100)
+		foreach (Transform t in transform)
+		{
+
+
+			//		if(t.name == "caryell")
+			//			t.renderer.enabled=false;
+			
+
+		//	Instantiate(explosion, transform.position, transform.rotation);
+
+		}
+		
 
 
 
+
+
+		if (delay > 150) 
+		{
+
+			delay=0;
+
+			gameover=false;
+
+			Application.LoadLevel (0);
+		}
 
 
 		
 	
+
 		
 		if (count > 5) {
 			count = 0;
@@ -342,26 +476,31 @@ public class carRotate : MonoBehaviour {
 		
 
 		
-		
-		
-		if (Input.GetKey (KeyCode.RightArrow)|| (touch.position.x > Screen.width / 2&&Input.touchCount >0)) {
-			left = true;
-			right = false;
+		if (gameover == false) {	
+						if (Input.GetKey (KeyCode.RightArrow) || (touch.position.x > Screen.width / 2 && Input.touchCount > 0)) {
+								left = true;
+								right = false;
 			
 			
-		} else
-		if (Input.GetKey (KeyCode.LeftArrow)|| (touch.position.x < Screen.width / 2&&Input.touchCount >0)) {
-			left = false;
-			right = true;
+						} else
+		if (Input.GetKey (KeyCode.LeftArrow) || (touch.position.x < Screen.width / 2 && Input.touchCount > 0)) {
+								left = false;
+								right = true;
 			
 			
-		} else {
+						} else {
+								left = false;
+								right = false;
+			
+						}
+
+
+				}
+		else {
 			left = false;
 			right = false;
 			
 		}
-
-
 
 		
 		
