@@ -6,8 +6,8 @@ public class carRotate : MonoBehaviour {
 	float xspeep = 0f;
 	float power = 0.028f;
 	float friction = 0.95f;
-	bool right = false;
-	bool left = false;
+	public bool right = false;
+	public bool left = false;
 	
 	public float fuel = 20000;
 	

@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: fceabf63428f643a3aea1adc000c8715
+guid: e8e47c78d3dca40948afc6e0c48fc212
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
+    100000: Cube
+    100002: Cube_002
+    100004: //RootNode
+    400000: Cube
+    400002: Cube_002
+    400004: //RootNode
+    2300000: Cube
+    2300002: Cube_002
+    2300004: //RootNode
+    3300000: Cube
+    3300002: Cube_002
+    3300004: //RootNode
+    4300000: Cube_002
+    4300002: Cube
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -33,9 +42,9 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
+    optimizeMeshForGPU: 1
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001

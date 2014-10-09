@@ -50,11 +50,11 @@ public class carMove : MonoBehaviour {
 		speed = parent.GetComponent<Obstacle> ().speed;
 
 		if(right){
-			xspeep += (power)+(speed-0.4f)/25;
+			xspeep += (power)+(speed-0.4f)/30;
 		//	fuel -= power;
 		}
 		if(left){
-			xspeep -= (power)+(speed-0.4f)/25;
+			xspeep -= (power)+(speed-0.4f)/30;
 		//	fuel -= power;
 		}
 		

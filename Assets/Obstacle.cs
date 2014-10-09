@@ -53,7 +53,7 @@ public class Obstacle : MonoBehaviour {
 
 
 
-	public float speed,time=0;
+	public float speed,time=0,turntime=0;
 	
 	// Use this for initialization
 	void Start () {
@@ -92,9 +92,9 @@ public class Obstacle : MonoBehaviour {
 		ob2pos = new Vector3[ob2.transform.childCount];
 		
 		
-		ob1=Instantiate (ob1, new Vector3(player.transform.position.x,0,120), transform.rotation) as GameObject;
+		ob1=Instantiate (ob1, new Vector3(player.transform.position.x,0,110), transform.rotation) as GameObject;
 		
-		ob2=Instantiate (ob2, new Vector3(player.transform.position.x,0,120), transform.rotation) as GameObject;
+		ob2=Instantiate (ob2, new Vector3(player.transform.position.x,0,110), transform.rotation) as GameObject;
 		
 		
 		
@@ -243,7 +243,7 @@ public class Obstacle : MonoBehaviour {
 		}
 		
 		
-		if (curob.transform.position.z < player.transform.position.z - 4 * size.z) {
+		if (curob.transform.position.z < player.transform.position.z - 4 * size.z&&delay==0) {
 			
 			
 			
@@ -254,7 +254,7 @@ public class Obstacle : MonoBehaviour {
 			
 			
 			
-			curob.transform.position = new Vector3(curob.transform.position.x,curob.transform.position.y,140);
+			curob.transform.position = new Vector3(curob.transform.position.x,curob.transform.position.y,130);
 			
 			
 			
@@ -360,10 +360,15 @@ public class Obstacle : MonoBehaviour {
 						if(time==5)
 						{
 
-							if(speed<1)
+							if(speed<0.85f)
 						speed+=0.05f;
+
 						
 							time=0;
+
+							turntime+=3;
+
+
 						}
 
 
@@ -396,13 +401,13 @@ public class Obstacle : MonoBehaviour {
 		
 		
 		//		if (curob2.transform.position.z < player.transform.position.z - 4 * size.z)
-		if (curob2.transform.position.z < player.transform.position.z - 4 * size.z)
+		if (curob2.transform.position.z < player.transform.position.z - 4 * size.z&&delay==0)
 			
 		{
 			
 			
 			
-			curob2.transform.position = new Vector3(curob2.transform.position.x,curob2.transform.position.y,140);
+			curob2.transform.position = new Vector3(curob2.transform.position.x,curob2.transform.position.y,130);
 			
 			
 			/*
@@ -585,37 +590,35 @@ public class Obstacle : MonoBehaviour {
 	void reset(GameObject curo,Vector3[] child,bool[] reg)
 	{
 		
-		
-		
-		for(int j=0;j<curo.transform.childCount;j++)
-		{
+		if (delay == 0) {	
+						for (int j=0; j<curo.transform.childCount; j++) {
 			
-			reg[j]=false;
+								reg [j] = false;
 	
 
 
-			if(!curo.transform.GetChild(j).transform.rigidbody.isKinematic&&curo.transform.GetChild(j).transform.rigidbody!=null)
-			{		
+								if (!curo.transform.GetChild (j).transform.rigidbody.isKinematic && curo.transform.GetChild (j).transform.rigidbody != null) {		
 				
-				curo.transform.GetChild(j).transform.rigidbody.velocity = Vector3.zero;
+										curo.transform.GetChild (j).transform.rigidbody.velocity = Vector3.zero;
 				
-				curo.transform.GetChild(j).transform.rigidbody.angularVelocity = Vector3.zero;
+										curo.transform.GetChild (j).transform.rigidbody.angularVelocity = Vector3.zero;
 				
 				
-			}
-			
+								}
+			 
 
 			
 			
-			curo.transform.GetChild(j).transform.position=new Vector3(child[j].x,child[j].y,child[j].z);
+								curo.transform.GetChild (j).transform.position = new Vector3 (child [j].x, child [j].y, child [j].z);
 			
-			curo.transform.GetChild(j).transform.rotation=Quaternion.identity;
-			
-			
+								curo.transform.GetChild (j).transform.rotation = Quaternion.identity;
 			
 			
-		}
+			
+			
+						}
 		
+				}
 		
 	}
 	
