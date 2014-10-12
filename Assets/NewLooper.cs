@@ -6,10 +6,10 @@ public class NewLooper : MonoBehaviour {
 	
 	
 	
-	public GameObject player,go1,go2,go3,obstaclemaker;
+	public GameObject player,go1,go2,go3,go4,obstaclemaker;
 	
 	
-	GameObject g1,g2,g3;
+	GameObject g1,g2,g3,g4;
 	
 	
 	GameObject[] gobs;
@@ -31,7 +31,7 @@ public class NewLooper : MonoBehaviour {
 		delay = player.GetComponent<carMove> ().health;
 
 
-		sizeofarray = 9;
+		sizeofarray = 12;
 
 
 		gobs = new GameObject[sizeofarray];
@@ -173,6 +173,25 @@ public class NewLooper : MonoBehaviour {
 			}
 
 
+			if(i>=9&&i<12)
+			{
+				
+				
+				if(i==9)
+					gobs [i] = Instantiate (go4, firstpos, transform.rotation) as GameObject;
+				else
+					if(i==10)
+						gobs [i] = Instantiate (go4, secondpos, transform.rotation) as GameObject;
+				else
+					if(i==11)
+						gobs [i] = Instantiate (go4, thirdpos, transform.rotation) as GameObject;
+				
+				
+				
+				
+				//				gobs [i] = Instantiate (go3, thirdpos, transform.rotation) as GameObject;
+				
+			}
 
 
 
@@ -308,7 +327,7 @@ public class NewLooper : MonoBehaviour {
 					
 
 					
-					print ("counter is : "+counter);
+		//			print ("counter is : "+counter);
 
 				}
 				
@@ -337,8 +356,16 @@ public class NewLooper : MonoBehaviour {
 					else
 						gobs[i].SetActive(false);
 				}
+				else if(counter==12)
+				{
+					
+					if(i>=9&&i<12)
+						gobs[i].SetActive(true);
+					else
+						gobs[i].SetActive(false);
+				}
 
-				if(counter>12)
+				if(counter>15)
 					counter=0;
 
 
